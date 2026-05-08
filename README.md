@@ -1,39 +1,13 @@
-node-python
-===========
+> Why do I have a folder named ".expo" in my project?
 
-A super-simple wrapper for NodeJS to interact programatically with the Python shell. Enables the use of Python-based tools from Node.
+The ".expo" folder is created when an Expo project is started using "expo start" command.
 
-[![NPM Stats](https://nodei.co/npm/python.png?downloads=true&stars=true)](https://npmjs.org/package/python)
+> What do the files contain?
 
-![NPM Downloads](https://nodei.co/npm-dl/python.png?months=9)
+- "devices.json": contains information about devices that have recently opened this project. This is used to populate the "Development sessions" list in your development builds.
+- "settings.json": contains the server configuration that is used to serve the application manifest.
 
-Example
--------
-This example starts a python child process, reads stdin for python commands, pipes them through to the python shell and runs the callback method with the resulting output. State is preserved in the shell between calls.
+> Should I commit the ".expo" folder?
 
-```javascript
-// ------
-// app.js
-// ------
-var python=require('python').shell;
-
-// a callback to handle the response
-var mycallback = function(err, data) {
-   if (err) {
-     console.error(err);
-   } else {
-     console.log("Callback function got : " + data);
-   }
-};
-
-// to test, read and execute commands from stdin
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
-process.stdin.on('data', function(chunk) {
-   python(chunk, mycallback);
-});
-```
-
-License
--------
-MIT
+No, you should not share the ".expo" folder. It does not contain any information that is relevant for other developers working on the project, it is specific to your machine.
+Upon project creation, the ".expo" folder is already added to your ".gitignore" file.
